@@ -1,0 +1,144 @@
+body {
+  background-color: #EFEFEB;
+}
+
+.wall {
+  height: 300px;
+  background-color: #E57373;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+/********** Login **********/
+
+.login-form {
+  background-color: #fff;
+  min-height: 450px;
+  margin-top: -58px;
+}
+
+.login-form .login-form-header {
+  color: #E57373;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.login-form .divider, .register-form .divider {
+  margin-bottom: 50px;
+}
+
+.login-form .password-field {
+  margin-bottom: 30px;
+}
+
+.login-btn, .submit-btn {
+  float: right;
+}
+
+/********** Registration **********/
+
+.register-form {
+  background-color: #fff;
+  min-height: 450px;
+  margin-top: -94px;
+  padding-bottom: 30px;
+}
+
+.register-form .register-form-header {
+  color: #E57373;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.register-form .section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.register-form .divider {
+  margin-bottom: 15px;
+}
+
+.register-form .row {
+  margin-bottom: 0;
+}
+
+.gender-wrapper {
+  padding-top: 30px;
+}
+
+.gender-radio, .role-radio {
+  display: inline-block;
+}
+
+.submit-btn-wrapper {
+  padding-top: 24px;
+}
+
+/********** Main Page **********/
+
+.main-page-container {
+  min-height: 900px;
+  margin-top: -200px;
+}
+
+.main-page-container nav {
+  padding: 0 40px;
+  background-color: rgba(0, 0, 0, .7);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+/*************** Inputs ***************/
+
+/* label focus color */
+.input-field input[type=text]:focus + label {
+ color: #e57373;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+ border-bottom: 1px solid #e57373;
+ box-shadow: 0 1px 0 0 #e57373;
+}
+/* valid color */
+.input-field input[type=text].valid {
+ border-bottom: 1px solid #e57373;
+ box-shadow: 0 1px 0 0 #e57373;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+ border-bottom: 1px solid #e57373;
+ box-shadow: 0 1px 0 0 #e57373;
+}
+
+.input-field input[type=password]:focus + label {
+ color: #e57373;
+}
+/* label underline focus color */
+.input-field input[type=password]:focus {
+ border-bottom: 1px solid #e57373;
+ box-shadow: 0 1px 0 0 #e57373;
+}
+/* valid color */
+.input-field input[type=password].valid {
+ border-bottom: 1px solid #e57373;
+ box-shadow: 0 1px 0 0 #e57373;
+}
+/* invalid color */
+.input-field input[type=password].invalid {
+ border-bottom: 1px solid #e57373;
+ box-shadow: 0 1px 0 0 #e57373;
+}
+
+/* icon prefix focus color */
+.input-field .prefix.active {
+ color: #e57373;
+}
+
+[type="radio"]:checked+label:after {
+  border: 2px solid #e57373;
+  background-color: #e57373;
+}
+
+nav {
+  background: none;
+  box-shadow: none;
+}

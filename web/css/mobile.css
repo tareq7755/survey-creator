@@ -1,0 +1,17 @@
+@media ( max-width: 600px ) {
+
+	.submit-btn-wrapper {
+		text-align: center;
+	}
+
+	.login-btn, .submit-btn {
+		float: none;
+		width: 100%;
+	}
+
+	.form-forgot-wrapper {
+		text-align: center;
+		margin-bottom: 25px;
+	}
+
+}
