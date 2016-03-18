@@ -31,21 +31,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ]); ?>
 
               <div class="row">
-                <div class="col s10 offset-s1">
+                <div class="col s10 offset-s1">                    
                     <?= $form->field($model, 'email', ['options' => ['class' => 'input-field email-field']]) ?>
-                    <i class="material-icons prefix">email</i>
-                   <label for="email" class="">Email</label>
+                    <i class="material-icons prefix">email</i>                    
                 </div>
               </div>
 
               <div class="row">
                 <div class="col s10 offset-s1">
-                  <div class="input-field password-field">
+                    <?= $form->field($model, 'password', ['options' => ['class' => 'validate input-field password-field']])->passwordInput() ?>
                     <i class="material-icons prefix">vpn_key</i>
-                    <?= $form->field($model, 'password', ['options' => ['class' => 'validate']])->passwordInput() ?>
-                    <i class="material-icons prefix">vpn_key</i>
-                   <label for="password" class="">Password</label>
-                  </div>
                 </div>
               </div>
               <div class="row">
@@ -55,11 +50,12 @@ $this->params['breadcrumbs'][] = $this->title;
                       <div class="col s12 m6">
                         <div class="form-forgot-wrapper">
                           <span class="form-forgot">Forgot Password?</span>
+                          <span><?=Html::a('Register', ['/site/register'])?></span>
                         </div>
                       </div>
                       <div class="col s12 m6">
                         <div class="login-btn-wrapper">
-                          <?= Html::submitButton('Login', ['class' => 'waves-effect waves-light btn red lighten-2 login-btn', 'name' => 'login-button']) ?>
+                          <?= Html::submitButton('Login', ['class' => 'waves-effect waves-light btn login-btn', 'name' => 'login-button']) ?>
                         </div>
                       </div>
                     </div>

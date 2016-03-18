@@ -17,7 +17,7 @@ AppAsset::register($this);
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= Html::csrfMetaTags() ?>    
+    <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
@@ -28,17 +28,6 @@ AppAsset::register($this);
         'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],]) ?> -->
   <?= $content ?>
 </div>
-
-
-<footer class="page-footer">
-  <div class="container">
-    <div class="container">
-      <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-      <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-  </div>
-</footer>
-
 
 <?php $this->endBody() ?>
 </body>

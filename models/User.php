@@ -2,32 +2,44 @@
 
 namespace app\models;
 
-class User extends \yii\base\Object implements \yii\web\IdentityInterface
+class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
+    public $firstName;
+    public $lastName;    
+    public $age;
+    public $role;
+    public $gender;
+    public $universityId;
     public $id;
-    public $username;
     public $email;
     public $password;
+    
     public $authKey;
     public $accessToken;
 
     private static $users = [
         '100' => [
             'id' => '100',
-            'username' => 'admin',
-            'email'    => 'admin@example.com',
-            'password' => 'admin',
+            'firstName' => 'raed',
+            'lastName' => 'bustami',
+            'email'    => 'raed@example.com',
+            'password' => 'raed',
+            'age' => '22',
+            'role' => 'student',
+            'universityId' => '0091789',
+            'gender' => 'male',
+            
             'authKey' => 'test100key',
             'accessToken' => '100-token',
         ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'email'    => 'demo@example.com',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
+//        '101' => [
+//            'id' => '101',
+//            'username' => 'demo',
+//            'email'    => 'demo@example.com',
+//            'password' => 'demo',
+//            'authKey' => 'test101key',
+//            'accessToken' => '101-token',
+//        ],
     ];
 
     /**
@@ -45,23 +57,6 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     {
         foreach (self::$users as $user) {
             if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Finds user by username
-     *
-     * @param  string      $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
-    {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
                 return new static($user);
             }
         }
@@ -120,5 +115,23 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     public function validatePassword($password)
     {
         return $this->password === $password;
+    }
+    
+    /**
+     * Generates password hash from password and sets it to the model
+     *
+     * @param string $password
+     */
+    public function setPassword($password)
+    {
+        $this->password_hash = \Yii::$app->security->generatePasswordHash($password);
+    }
+    
+    /**
+     * Generates "remember me" authentication key
+     */
+    public function generateAuthKey()
+    {
+        $this->auth_key = \Yii::$app->security->generateRandomString();
     }
 }

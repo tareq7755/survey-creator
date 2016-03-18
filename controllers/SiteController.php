@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\RegisterForm;
 
 class SiteController extends Controller
 {
@@ -16,19 +17,25 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['logout', 'index', 'register'],
                 'rules' => [
-                    [
-                        'actions' => ['logout'],
+                    [                        
+                        'actions' => ['logout', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
+                    [
+                        'actions' => ['register'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ]
                 ],
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    //'register' => ['post']
+                    //'logout' => ['post'],
                 ],
             ],
         ];
@@ -48,12 +55,12 @@ class SiteController extends Controller
     }
 
     public function actionIndex()
-    {
+    {        
         return $this->render('index');
     }
 
     public function actionLogin()
-    {
+    {        
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -71,6 +78,24 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+    
+    /**
+     * Signs user up.
+     *
+     * @return mixed
+     */
+    public function actionRegister()
+    {        
+        $model = new RegisterForm();
+        if ($model->load(Yii::$app->request->post())) {            
+            if ($user = $model->register()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
+        return $this->render('register', ['model' => $model]);
     }
 
     public function actionContact()
