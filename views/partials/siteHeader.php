@@ -1,5 +1,4 @@
 <?php
-    use yii\helpers\Url;
     use yii\bootstrap\Html;
 ?>
 <header class="top-header">

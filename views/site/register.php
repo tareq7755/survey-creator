@@ -7,7 +7,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 
-$this->title = 'Register';
+$this->title                   = 'Register';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -25,8 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="divider"></div>
 
                     <?php
-                    $form = ActiveForm::begin([
-                                'id' => 'form-signup',
+                    $form                          = ActiveForm::begin([
+                                'id'     => 'form-signup',
                                 'method' => 'POST',
                                 'action' => Url::to(['site/register']),
                     ]);
@@ -63,19 +63,19 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="col s10 offset-s1">
                             <div class="input-field password-field">
                                 <?= $form->field($model, 'password', ['options' => ['class' => 'validate input-field password-field']])->passwordInput() ?>
-<!--                                <label for="password">Password</label>-->
+                                <!--                                <label for="password">Password</label>-->
                             </div>
                         </div>
                     </div>
 
-<!--                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="input-field confirm-password-field">
-                                <input id="password" type="password" class="validate">
-                                <label for="confirm-password">Confirm password</label>
-                            </div>
-                        </div>
-                    </div>-->
+                    <!--                    <div class="row">
+                                            <div class="col s10 offset-s1">
+                                                <div class="input-field confirm-password-field">
+                                                    <input id="password" type="password" class="validate">
+                                                    <label for="confirm-password">Confirm password</label>
+                                                </div>
+                                            </div>
+                                        </div>-->
 
                     <div class="row">
                         <div class="col s10 offset-s1">
@@ -99,7 +99,17 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="col s10 offset-s1">
                             <div class="role-wrapper">
                                 <div class="role-radio">                                    
-                                    <?= $form->field($model, 'role')->dropDownList(['Employee', 'Student'])->label();?>
+                                    <?= $form->field($model, 'role')->dropDownList(['Employee', 'Student'])->label(); ?>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="role-wrapper">
+                                <div class="department-radio">                                    
+                                    <?= $form->field($model, 'department')->dropDownList(['Engineering', 'Information Technology'])->label(); ?>
                                 </div>                                
                             </div>
                         </div>
@@ -109,7 +119,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="col s10 offset-s1 m5 offset-m1">
                             <div class="gender-wrapper">
                                 <div class="gender-radio">
-                                    <?= $form->field($model, 'gender')->dropDownList(['Male', 'Female'])->label();?>
+                                    <?= $form->field($model, 'gender')->dropDownList(['Male', 'Female'])->label(); ?>
                                 </div>                                
                             </div>
                         </div>

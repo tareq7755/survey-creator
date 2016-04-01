@@ -1,8 +1,6 @@
 <?php
 
 namespace app\models;
-
-use Yii;
 use yii\base\Model;
 
 /**
@@ -15,6 +13,7 @@ class RegisterForm extends Model
     public $email;        
     public $age;
     public $role;
+    public $department;
     public $gender;
     
     public $password;
@@ -30,26 +29,29 @@ class RegisterForm extends Model
         return [
             ['firstName', 'filter', 'filter' => 'trim'],
             ['firstName', 'required'],
-            ['firstName', 'string', 'min' => 2, 'max' => 255],
+            ['firstName', 'string', 'length' => [3, 50]],
             
-            ['lastName', 'filter', 'filter' => 'trim'],            
+            ['lastName', 'filter', 'filter' => 'trim'],
             ['lastName', 'required'],
-            ['lastName', 'string', 'min' => 2, 'max' => 255],
+            ['lastName', 'string', 'length' => [3, 50]],
             
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
-            //['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This email address has already been taken.'],
             
             ['age', 'required'],
-            ['age', 'integer', 'max' => 100],
+            ['age', 'integer', 'min'=>18,'max'=>100],
             
             ['role', 'required'],
-            ['role', 'string'],
+            ['role', 'integer'],
+            
+            ['department', 'required'],
+            ['department', 'integer'],
             
             ['gender', 'required'],
-            ['gender', 'string'],
+            ['gender', 'boolean'],
             
             ['password', 'required'],
             ['password', 'string', 'min' => 4],
@@ -64,23 +66,23 @@ class RegisterForm extends Model
      *
      * @return User|null the saved model or null if saving fails
      */
-    public function register()
-    {
-        if (!$this->validate()) {
+    public function register(){
+        if(!$this->validate()){
             return null;
-        }                  
+        }
         $user = new User();
-        
-        $user->firstName = $this->firstName;
-        $user->lastName = $this->lastName;
-        $user->email = $this->email;
-        $user->age = $this->age;
-        $user->role = $this->role;
-        $user->gender = $this->gender;
-        $user->universityId = $this->universityId;
-        //$user->setPassword($this->password);
-        //$user->generateAuthKey();        
+
+        $user->first_name    = $this->firstName;
+        $user->last_name     = $this->lastName;
+        $user->email         = $this->email;
+        $user->age           = $this->age;
+        $user->role_id       = $this->role;
+        $user->department_id = $this->department;
+        $user->gender        = 1;
+        $user->university_id = $this->universityId;
+        $user->setPassword($this->password);
+        $user->generateAuthKey();
         return $user->save() ? $user : null;
     }
-    
+
 }

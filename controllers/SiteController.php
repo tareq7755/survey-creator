@@ -86,7 +86,7 @@ class SiteController extends Controller
      * @return mixed
      */
     public function actionRegister()
-    {        
+    {   
         $model = new RegisterForm();
         if ($model->load(Yii::$app->request->post())) {            
             if ($user = $model->register()) {

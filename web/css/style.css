@@ -134,6 +134,187 @@ body {
   line-height: 64px;
 }
 
-select {
-    display: block;
+/********** Left Nav **********/
+
+.nav-container {
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  float: none;
+  background-color: #262B33;
+  width: 55px;
+  overflow: hidden;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.nav-container.hover-menu {
+  width: 220px;
+}
+
+.nav-container .nav-main li {
+  min-width: 220px;
+}
+
+.nav-container .nav-main a {
+  display: block;
+  padding: 15px 15px;
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.nav-container .nav-main a:hover {
+  color: rgba(255,255,255,0.8);
+}
+
+.nav-container .nav-main a i {
+  display: inline-block;
+  margin-right: 20px;
+  width: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 22px;
+  vertical-align: middle;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.nav-container.hover-menu .nav-main a i {
+  font-size: 16px;
+}
+
+.nav-container .nav-main a span {
+  vertical-align: bottom;
+}
+
+.nav-container .nav-main .side-logout {
+  position: absolute;
+  bottom: 10px;
+}
+
+/********** Main Content **********/
+
+.content-container {
+  margin-left: 55px;
+  -webkit-transition: margin-left 0.25s ease-in-out;
+  -moz-transition: margin-left 0.25s ease-in-out;
+  transition: margin-left 0.25s ease-in-out;
+}
+
+.content-container.hover-menu {
+  margin-left: 220px;
+}
+
+.content-container .page-dashboard {
+  padding: 15px 30px;
+}
+
+.content-container .page-dashboard .panel {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #e2edeb;
+  border-radius: 2px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.1);
+}
+
+.surveys-table th, .surveys-table td {
+  padding: 15px 25px;
+}
+
+.surveys-table th {
+  color: #26a69a;
+}
+
+.surveys-table a {
+  color: #262B33
+}
+
+.surveys-table i {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.content-container .createSurvey-wrapper {
+  width: 800px;
+  min-height: 400px;
+  margin: auto;
+  padding-bottom: 50px;
+}
+
+.content-container .createSurvey-wrapper .title-field {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+.content-container .createSurvey-wrapper .assignee-section {
+  margin-top: 40px;
+}
+
+.content-container .createSurvey-wrapper .drop-down {
+  display: inline-block;
+  width: 48%;
+}
+
+.content-container .createSurvey-wrapper .drop-down.last {
+  float: right;
+}
+
+.content-container .createSurvey-wrapper .drop-down .material-icons {
+  position: absolute;
+  bottom: 0;
+  font-size: 2rem;
+}
+
+.content-container .createSurvey-wrapper .drop-down .select-wrapper {
+  margin-left: 3rem;
+}
+
+.content-container .createSurvey-wrapper .drop-down .select-wrapper .select-dropdown {
+  margin-bottom: 0;
+}
+
+.content-container .createSurvey-wrapper .drop-down label {
+  left: 3rem;
+}
+
+.content-container .createSurvey-wrapper .datepicker-container {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.content-container .createSurvey-wrapper .datepicker-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 48%;
+  overflow: hidden;
+}
+
+.content-container .createSurvey-wrapper .end-date {
+  float: right;
+}
+
+.content-container .createSurvey-wrapper .datepicker-wrapper label {
+  margin-left: 3rem;
+}
+
+.content-container .createSurvey-wrapper .datepicker-wrapper input {
+  margin-bottom: 0;
+  margin-left: 3rem;
+}
+
+.content-container .createSurvey-wrapper .datepicker-wrapper .material-icons {
+  font-size: 2rem;
+  position: absolute;
+  bottom: 0;
+}
+
+.content-container .createSurvey-wrapper .lets-go {
+  text-align: center;
 }
