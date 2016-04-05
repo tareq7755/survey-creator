@@ -8,31 +8,45 @@ use yii\grid\GridView;
 
 $this->title = 'Surveys';
 $this->params['breadcrumbs'][] = $this->title;
+echo $this->render('../partials/siteHeader');
 ?>
-<div class="surveys-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="main-container">
+    <?= $this->render('../partials/sideNav'); ?>
 
-    <p>
-        <?= Html::a('Create Surveys', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <div class="content-container">
+        <div class="page-dashboard">
+            <div class="row">
+                <div class="col m12">
+                    <div class="panel">
+                        <div class="surveys-index">
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+                            <p>
+                                <?= Html::a('Create Surveys', ['create'], ['class' => 'btn']) ?>
+                            </p>
 
-            'id',
-            'title',
-            'targeted_role_id',
-            'targeted_department_id',
-            'publish_date',
-            // 'end_date',
-            // 'created_at',
-            // 'updated_at',
+                            <?=
+                            GridView::widget([
+                                'dataProvider' => $dataProvider,
+                                'columns' => [
+                                    ['class' => 'yii\grid\SerialColumn'],
+                                    'id',
+                                    'title',
+                                    'targeted_role_id',
+                                    'targeted_department_id',
+                                    'publish_date',
+                                    // 'end_date',
+                                    // 'created_at',
+                                    // 'updated_at',
+                                    ['class' => 'yii\grid\ActionColumn'],
+                                ],
+                            ]);
+                            ?>
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -2,20 +2,33 @@
 
 use yii\helpers\Html;
 
-
 /* @var $this yii\web\View */
 /* @var $model app\models\Surveys */
 
 $this->title = 'Create Surveys';
 $this->params['breadcrumbs'][] = ['label' => 'Surveys', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+echo $this->render('../partials/siteHeader');
 ?>
-<div class="surveys-create">
+<div class="main-container">
+    <?= $this->render('../partials/sideNav'); ?>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+    <div class="content-container">
+        <div class="page-dashboard">
+            <div class="row">
+                <div class="col m12">
+                    <div class="panel">
+                        <div class="createSurvey-wrapper">
+                            <?=
+                            $this->render('_form', [
+                                'model' => $model,
+                            ])
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>

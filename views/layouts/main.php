@@ -28,6 +28,7 @@ AppAsset::register($this);
   <?= $content ?>
 
 <?php $this->endBody() ?>
+<script src="https://code.highcharts.com/highcharts.js"></script>
 </body>
 </html>
 <?php $this->endPage() ?>

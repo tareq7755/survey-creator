@@ -24,7 +24,8 @@ class AppAsset extends AssetBundle
         'css/mobile.css'
     ];
     public $js = [
-        'js/materialize.min.js', 
+        'js/materialize.min.js',
+        'js/charts.js',
         'js/script.js'
     ];
     public $depends = [

@@ -31,31 +31,32 @@ $this->params['breadcrumbs'][] = $this->title;
             ]); ?>
 
               <div class="row">
-                <div class="col s10 offset-s1">                    
-                    <?= $form->field($model, 'email', ['options' => ['class' => 'input-field email-field']]) ?>
-                    <i class="material-icons prefix">email</i>                    
+                <div class="col s10 offset-s1">       
+                    <div class="input-field email-field input-field-with-icon">
+                        <?= $form->field($model, 'email') ?>
+                        <i class="material-icons prefix">email</i>   
+                    </div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col s10 offset-s1">
-                    <?= $form->field($model, 'password', ['options' => ['class' => 'validate input-field password-field']])->passwordInput() ?>
-                    <i class="material-icons prefix">vpn_key</i>
+                    <div class="input-field email-field input-field-with-icon">
+                        <?= $form->field($model, 'password')->passwordInput() ?>
+                        <i class="material-icons prefix">vpn_key</i>
+                    </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col s10 offset-s1">
                   <div class="form-controllers">
                     <div class="row">
-                      <div class="col s12 m6">
-                        <div class="form-forgot-wrapper">
-                          <span class="form-forgot">Forgot Password?</span>
-                          <span><?=Html::a('Register', ['/site/register'])?></span>
-                        </div>
-                      </div>
-                      <div class="col s12 m6">
+                      <div class="col s12">
                         <div class="login-btn-wrapper">
                           <?= Html::submitButton('Login', ['class' => 'waves-effect waves-light btn login-btn', 'name' => 'login-button']) ?>
+                        </div>
+                        <div class="register-btn-wrapper">
+                          <span><?=Html::a('Register', ['/site/register'])?></span>
                         </div>
                       </div>
                     </div>

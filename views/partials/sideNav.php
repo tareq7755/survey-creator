@@ -6,13 +6,13 @@
     <div class="nav-wrapper">
         <ul class="nav-main">
             <li>
-                <a href="<?= Url::to('site')?>">
+                <a href="<?= Url::to('/site')?>">
                     <i class="material-icons">home</i>
                     <span>Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="<?= Url::to('survey')?>">
+                <a href="<?= Url::to('/survey')?>">
                     <i class="material-icons">assignment</i>
                     <span>Surveys</span>
                 </a>
