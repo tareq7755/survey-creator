@@ -6,6 +6,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
 
 $this->title                   = 'Register';
 $this->params['breadcrumbs'][] = $this->title;
@@ -99,7 +100,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="col s10 offset-s1">
                             <div class="role-wrapper">
                                 <div class="role-radio">                                    
-                                    <?= $form->field($model, 'role')->dropDownList(['Employee', 'Student'])->label(); ?>
+                                    <?= $form->field($model, 'role')->dropDownList(ArrayHelper::map($roleModel->find()->all(), 'id', 'name'))->label(); ?>
                                 </div>                                
                             </div>
                         </div>
@@ -108,8 +109,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row">
                         <div class="col s10 offset-s1">
                             <div class="role-wrapper">
-                                <div class="department-radio">                                    
-                                    <?= $form->field($model, 'department')->dropDownList(['Engineering', 'Information Technology'])->label(); ?>
+                                <div class="department-radio">
+                                    <?= $form->field($model, 'department')->dropDownList(ArrayHelper::map($departmentModel->find()->all(), 'id', 'name'))->label(); ?>
                                 </div>                                
                             </div>
                         </div>
@@ -119,7 +120,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="col s10 offset-s1 m5 offset-m1">
                             <div class="gender-wrapper">
                                 <div class="gender-radio">
-                                    <?= $form->field($model, 'gender')->dropDownList(['Male', 'Female'])->label(); ?>
+                                    <?= $form->field($model, 'gender')->dropDownList(['Female', 'Male'])->label(); ?>
                                 </div>                                
                             </div>
                         </div>

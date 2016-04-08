@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="<?= Url::to('/user')?>">
                     <i class="material-icons">person_pin</i>
                     <span>Users Managment</span>
                 </a>

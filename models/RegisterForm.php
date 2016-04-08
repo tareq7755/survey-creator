@@ -71,14 +71,14 @@ class RegisterForm extends Model
             return null;
         }
         $user = new User();
-
+        
         $user->first_name    = $this->firstName;
         $user->last_name     = $this->lastName;
         $user->email         = $this->email;
         $user->age           = $this->age;
         $user->role_id       = $this->role;
         $user->department_id = $this->department;
-        $user->gender        = 1;
+        $user->gender        = $this->gender;
         $user->university_id = $this->universityId;
         $user->setPassword($this->password);
         $user->generateAuthKey();

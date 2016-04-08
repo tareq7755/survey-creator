@@ -22,6 +22,8 @@ echo $this->render('../partials/siteHeader');
                             <?=
                             $this->render('_form', [
                                 'model' => $model,
+                                'roleModel' => $roleModel,
+                                'departmentModel' => $departmentModel
                             ])
                             ?>
                         </div>

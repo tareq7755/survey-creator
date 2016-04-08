@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Survey;
+use app\models\Department;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use app\models\Department;
-use app\models\Role;
 
 /**
- * SurveyController implements the CRUD actions for Survey model.
+ * DepartmentController implements the CRUD actions for Department model.
  */
-class SurveyController extends Controller
+class DepartmentController extends Controller
 {
     public function behaviors()
     {
@@ -28,19 +27,22 @@ class SurveyController extends Controller
     }
 
     /**
-     * Lists all Survey models.
+     * Lists all Department models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $surveys = Survey::find()->all();        
+        $dataProvider = new ActiveDataProvider([
+            'query' => Department::find(),
+        ]);
+
         return $this->render('index', [
-            'surveys' => $surveys,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Survey model.
+     * Displays a single Department model.
      * @param integer $id
      * @return mixed
      */
@@ -52,27 +54,25 @@ class SurveyController extends Controller
     }
 
     /**
-     * Creates a new Survey model.
+     * Creates a new Department model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Survey();
+        $model = new Department();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'roleModel' => new Role(),
-                'departmentModel' => new Department()
             ]);
         }
     }
 
     /**
-     * Updates an existing Survey model.
+     * Updates an existing Department model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -86,14 +86,12 @@ class SurveyController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'roleModel' => new Role(),
-                'departmentModel' => new Department()
             ]);
         }
     }
 
     /**
-     * Deletes an existing Survey model.
+     * Deletes an existing Department model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -106,15 +104,15 @@ class SurveyController extends Controller
     }
 
     /**
-     * Finds the Survey model based on its primary key value.
+     * Finds the Department model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Survey the loaded model
+     * @return Department the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Survey::findOne($id)) !== null) {
+        if (($model = Department::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

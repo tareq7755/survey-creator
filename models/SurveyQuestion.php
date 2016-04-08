@@ -14,14 +14,14 @@ use Yii;
  * @property string $created_at
  * @property string $updated_at
  */
-class SurveyQuestions extends \yii\db\ActiveRecord
+class SurveyQuestion extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'survey_questions';
+        return 'survey_question';
     }
 
     /**

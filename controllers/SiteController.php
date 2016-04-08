@@ -9,6 +9,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\RegisterForm;
+use app\models\Department;
+use app\models\Role;
 
 class SiteController extends Controller
 {
@@ -86,8 +88,8 @@ class SiteController extends Controller
      * @return mixed
      */
     public function actionRegister()
-    {   
-        $model = new RegisterForm();
+    {           
+        $model = new RegisterForm();               
         if ($model->load(Yii::$app->request->post())) {            
             if ($user = $model->register()) {
                 if (Yii::$app->getUser()->login($user)) {
@@ -95,7 +97,7 @@ class SiteController extends Controller
                 }
             }
         }
-        return $this->render('register', ['model' => $model]);
+        return $this->render('register', ['model' => $model, 'roleModel' => new Role(), 'departmentModel' => new Department()]);
     }
 
     public function actionContact()
