@@ -61,7 +61,7 @@ class SurveyController extends Controller
         $model = new Survey();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->render('../question/create', ['surveyId' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
