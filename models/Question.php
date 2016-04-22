@@ -16,6 +16,8 @@ use Yii;
  */
 class Question extends \yii\db\ActiveRecord
 {
+    const MULTIPLE_CHOICE = 1;
+    const ESSAY = 0;
     /**
      * @inheritdoc
      */
@@ -50,4 +52,51 @@ class Question extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
         ];
     }
+    /**
+     * 
+     * @param array $data
+     * @return boolean
+     */
+    public function saveQuestions(array $data){
+        if(!isset($data['surveyId']) || empty($data['surveyId'])){
+            return false;
+        }
+        $surveyId = $data['surveyId'];
+        unset($data['surveyId']);
+
+        foreach($data as $type => $questions){
+            switch($type){
+                case self::ESSAY:
+                    foreach($questions as $question){
+                        $model            = new Question();
+                        $model->survey_id = $surveyId;
+                        $model->body      = $question;
+                        $model->type      = $type;
+                        $model->save(false);
+                    }
+                    break;
+                case self::MULTIPLE_CHOICE:
+                    foreach($questions as $question){
+                        $model            = new Question();
+                        $model->survey_id = $surveyId;
+                        $model->body      = $question['body'];
+                        $model->type      = $type;
+                        if($model->save(false)){
+                            foreach($question['options'] as $option){
+                                $optionModel              = new QuestionOptions();
+                                $optionModel->body        = $option;
+                                $optionModel->question_id = $model->id;
+                                $optionModel->save(false);
+                            }
+                        }
+                    }
+                    break;
+            }
+        }
+    }
+    
+    public function getOptions(){
+        return $this->hasMany(QuestionOptions::className(), ['question_id' => 'id']);
+    }
+
 }

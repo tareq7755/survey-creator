@@ -11,6 +11,8 @@ use app\models\ContactForm;
 use app\models\RegisterForm;
 use app\models\Department;
 use app\models\Role;
+use app\models\Survey;
+use app\models\User;
 
 class SiteController extends Controller
 {
@@ -58,7 +60,9 @@ class SiteController extends Controller
 
     public function actionIndex()
     {        
-        return $this->render('index');
+        $conditions = Yii::$app->user->identity->role_id != User::ADMIM ? ['targeted_role_id' => Yii::$app->user->identity->role_id] : [];
+        $surveys    = Survey::find()->where($conditions)->limit(5)->all();        
+        return $this->render('index', ['surveys' => $surveys]);
     }
 
     public function actionLogin()

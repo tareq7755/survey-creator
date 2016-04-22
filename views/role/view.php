@@ -22,20 +22,6 @@ echo $this->render('../partials/siteHeader');
                 <div class="col m12">
                     <div class="panel">
                         <div class="role-view">
-
-                            <p>
-                                <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-                                <?=
-                                Html::a('Delete', ['delete', 'id' => $model->id], [
-                                    'class' => 'btn btn-danger',
-                                    'data' => [
-                                        'confirm' => 'Are you sure you want to delete this item?',
-                                        'method' => 'post',
-                                    ],
-                                ])
-                                ?>
-                            </p>
-
                             <?=
                             DetailView::widget([
                                 'model' => $model,

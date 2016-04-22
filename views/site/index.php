@@ -1,8 +1,10 @@
 <?php
 /* @var $this yii\web\View */
-
+use app\models\User;
+use yii\helpers\Url;
 $this->title = 'My Yii Application';
 echo $this->render('../partials/siteHeader');
+
 ?>
 
 <div class="main-container">
@@ -14,65 +16,31 @@ echo $this->render('../partials/siteHeader');
                     <div class="panel main-chart" id="main-chart">
                     </div>
                     <div class="panel">
-
                         <table class="highlight responsive-table surveys-table">
                             <thead>
                                 <tr>
+                                    <th data-field="id">ID</th>
                                     <th data-field="id">Title</th>
-                                    <th data-field="name">Responses</th>
                                     <th data-field="price">Actions</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>Survey1</td>
-                                    <td>20</td>
-                                    <td>
-                                        <a href="#"><i class="material-icons">mode_edit</i></a>
-                                        <a href="#"><i class="material-icons">delete</i></a>
-                                        <a href="#"><i class="material-icons">remove_red_eye</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Survey2</td>
-                                    <td>30</td>
-                                    <td>
-                                        <a href="#"><i class="material-icons">mode_edit</i></a>
-                                        <a href="#"><i class="material-icons">delete</i></a>
-                                        <a href="#"><i class="material-icons">remove_red_eye</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Survey3</td>
-                                    <td>10</td>
-                                    <td>
-                                        <a href="#"><i class="material-icons">mode_edit</i></a>
-                                        <a href="#"><i class="material-icons">delete</i></a>
-                                        <a href="#"><i class="material-icons">remove_red_eye</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Survey4</td>
-                                    <td>100</td>
-                                    <td>
-                                        <a href="#"><i class="material-icons">mode_edit</i></a>
-                                        <a href="#"><i class="material-icons">delete</i></a>
-                                        <a href="#"><i class="material-icons">remove_red_eye</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Survey5</td>
-                                    <td>15</td>
-                                    <td>
-                                        <a href="#"><i class="material-icons">mode_edit</i></a>
-                                        <a href="#"><i class="material-icons">delete</i></a>
-                                        <a href="#"><i class="material-icons">remove_red_eye</i></a>
-                                    </td>
-                                </tr>
+                                <?php foreach($surveys as $survey): ?>
+                                    <tr>
+                                        <td><?= $survey->id; ?></td>
+                                        <td><?= $survey->title; ?></td>
+                                        <td>
+                                            <?php if(Yii::$app->user->identity->role_id == User::ADMIM): ?>
+                                                <a href="<?= Url::to('/survey/update?id=' . $survey->id) ?>"><i class="material-icons">mode_edit</i></a>                                                
+                                                <a href="<?= Url::to('/survey/delete?id=' . $survey->id) ?>" data-method="post" data-confirm="Are you sure?"><i class="material-icons">delete</i></a>
+                                            <?php endif; ?>
+                                            <a href="<?= Url::to('/survey/' . $survey->id) ?>"><i class="material-icons">remove_red_eye</i></a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>

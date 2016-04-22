@@ -24,7 +24,8 @@ use yii\web\IdentityInterface;
  * @property string $password_reset_token
  * @property string $auth_key
  */
-class User extends ActiveRecord implements IdentityInterface{  
+class User extends ActiveRecord implements IdentityInterface{
+    const ADMIM = 0;    
 
     /**
      * @inheritdoc

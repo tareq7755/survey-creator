@@ -77,8 +77,7 @@ function saveQuestions() {
             question.options = options;
             multipleChoiceQuestions.push(question);
         }
-    });
-    console.log(multipleChoiceQuestions)
-    $.post('create', {'multipleChoiceQuestions': multipleChoiceQuestions, 'essayQuestions' : essayQuestions});
+    });        
+    $.post('create', {1: multipleChoiceQuestions, 0: essayQuestions, 'surveyId': $('#survey-id').attr('value')});
     
 }

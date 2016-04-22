@@ -9,6 +9,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Department;
 use app\models\Role;
+use app\models\Question;
+use app\models\QuestionOptions;
+use app\models\User;
 
 /**
  * SurveyController implements the CRUD actions for Survey model.
@@ -32,10 +35,11 @@ class SurveyController extends Controller
      * @return mixed
      */
     public function actionIndex()
-    {
-        $surveys = Survey::find()->all();        
+    {   
+        $conditions = Yii::$app->user->identity->role_id != User::ADMIM ? ['targeted_role_id' => Yii::$app->user->identity->role_id] : [];
+        $surveys    = Survey::find()->where($conditions)->all();
         return $this->render('index', [
-            'surveys' => $surveys,
+                    'surveys' => $surveys,
         ]);
     }
 
@@ -45,7 +49,7 @@ class SurveyController extends Controller
      * @return mixed
      */
     public function actionView($id)
-    {
+    {           
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -59,9 +63,8 @@ class SurveyController extends Controller
     public function actionCreate()
     {
         $model = new Survey();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->render('../question/create', ['surveyId' => $model->id]);
+            Yii::$app->response->redirect(['question/create', 'surveyId' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -77,17 +80,27 @@ class SurveyController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+    public function actionUpdate($id){
+        $model = $this->findModel($id);           
+        if($model->load(Yii::$app->request->post()) && $model->save()){
+            $questions = Yii::$app->request->post()['questions'];
+            $options   = Yii::$app->request->post()['options'];            
+            foreach($questions as $questionId => $questionBody){
+                $question       = Question::findOne($questionId);
+                $question->body = $questionBody;
+                $question->save(false);
+            }
+            foreach($options as $optionId => $optionBody){
+                $option       = QuestionOptions::findOne($optionId);
+                $option->body = $optionBody;
+                $option->save(false);
+            }
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+        }else{
             return $this->render('update', [
-                'model' => $model,
-                'roleModel' => new Role(),
-                'departmentModel' => new Department()
+                        'model'           => $model,
+                        'roleModel'       => new Role(),
+                        'departmentModel' => new Department()
             ]);
         }
     }

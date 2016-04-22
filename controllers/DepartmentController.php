@@ -32,12 +32,9 @@ class DepartmentController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Department::find(),
-        ]);
-
+        $departments = Department::find()->all();        
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'departments' => $departments,
         ]);
     }
 

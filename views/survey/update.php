@@ -1,11 +1,8 @@
 <?php
-
-use yii\helpers\Html;
-
 /* @var $this yii\web\View */
 /* @var $model app\models\Surveys */
 
-$this->title = 'Update Surveys: ' . ' ' . $model->title;
+$this->title                   = 'Update Surveys: ' . ' ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Surveys', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
@@ -23,8 +20,8 @@ echo $this->render('../partials/siteHeader');
                         <div class="createSurvey-wrapper">
                             <?=
                             $this->render('_form', [
-                                'model' => $model,
-                                'roleModel' => $roleModel,
+                                'model'           => $model,
+                                'roleModel'       => $roleModel,
                                 'departmentModel' => $departmentModel
                             ])
                             ?>
@@ -34,4 +31,3 @@ echo $this->render('../partials/siteHeader');
             </div>
         </div>
     </div>
-</div>

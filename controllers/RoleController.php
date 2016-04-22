@@ -32,12 +32,9 @@ class RoleController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Role::find(),
-        ]);
-
+        $roles = Role::find()->all();        
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'roles' => $roles,
         ]);
     }
 

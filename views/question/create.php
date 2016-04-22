@@ -1,5 +1,4 @@
 <?php
-die($surveyId);
 $this->title = 'My Yii Application';
 echo $this->render('../partials/siteHeader');
 ?>
@@ -30,12 +29,11 @@ echo $this->render('../partials/siteHeader');
                             <div id="submit-questions" class="btn waves-effect waves-light right submit-btn">Submit</div>
                         </div>                            
                         <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
-                        <input id="survey-id" type="hidden" value="<?= $surveyId; ?>" />
-
                         <div class="add-questiontype-wrapper">
                             <div class="add-question" id="add-question"><a href="#">Add question</a></div>
                             <div class="add-essay" id="add-essay"><a href="#">Add essay</a></div>
                         </div>
+                        <input type="hidden" value="<?= $surveyId ?>" id="survey-id">
                     </div>
                 </div>
             </div>

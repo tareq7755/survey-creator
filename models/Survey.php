@@ -52,7 +52,7 @@ class Survey extends \yii\db\ActiveRecord{
     }
 
     public function getQuestions(){
-        return $this->hasMany(SurveyQuestion::className(), ['survey_id' => 'id']);
+        return $this->hasMany(Question::className(), ['survey_id' => 'id']);
     }
 
     public function getDepartment(){

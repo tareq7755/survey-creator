@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
+use app\models\Question;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Surveys */
@@ -42,7 +43,23 @@ use yii\helpers\ArrayHelper;
             <i class="material-icons prefix">date_range</i>
         </div>
     </div>
-    
+
+    <?php foreach($model->questions as $question): ?>
+        <div class="input-field">
+            <input name="questions[<?= $question->id ?>]" value="<?= $question->body ?>"> 
+        </div>
+        <?php if($question->type == Question::MULTIPLE_CHOICE): ?>
+            <?php foreach($question->options as $option) : ?>
+                <div class="input-field">
+                    <input name="options[<?= $option->id ?>]" value="<?= $option->body ?>">
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
+
+
+
+
     <div class="form-group lets-go">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
