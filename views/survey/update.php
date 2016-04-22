@@ -9,15 +9,29 @@ $this->title = 'Update Surveys: ' . ' ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Surveys', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
+echo $this->render('../partials/siteHeader');
 ?>
-<div class="surveys-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="main-container">
+    <?= $this->render('../partials/sideNav'); ?>
 
-    <?= $this->render('_form', [
-        'model' => $model,
-        'roleModel' => $roleModel,
-        'departmentModel' => $departmentModel
-    ]) ?>
-
+    <div class="content-container">
+        <div class="page-dashboard">
+            <div class="row">
+                <div class="col m12">
+                    <div class="panel">
+                        <div class="createSurvey-wrapper">
+                            <?=
+                            $this->render('_form', [
+                                'model' => $model,
+                                'roleModel' => $roleModel,
+                                'departmentModel' => $departmentModel
+                            ])
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -8,27 +8,44 @@ use yii\grid\GridView;
 
 $this->title = 'Roles';
 $this->params['breadcrumbs'][] = $this->title;
+echo $this->render('../partials/siteHeader');
+//echo '<pre>';
+//print_r($dataProvider);
+//die('te3waaaz');
 ?>
-<div class="role-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="main-container">
+    <?= $this->render('../partials/sideNav'); ?>
+    <div class="content-container">
+        <div class="page-dashboard">
+            <div class="row">
+                <div class="col m12">
+                    <div class="panel">
+                        <div class="role-index">
+                            <p>
+                                <?= Html::a('Create Role', ['create'], ['class' => 'btn btn-success']) ?>
+                            </p>
 
-    <p>
-        <?= Html::a('Create Role', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+                            <?=
+                            GridView::widget([
+                                'dataProvider' => $dataProvider,
+                                'columns' => [
+                                    ['class' => 'yii\grid\SerialColumn'],
+                                    'id',
+                                    'name',
+                                    'created_at',
+                                    'updated_at',
+                                    ['class' => 'yii\grid\ActionColumn'],
+                                ],
+                            ]);
+                            ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'name',
-            'created_at',
-            'updated_at',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+

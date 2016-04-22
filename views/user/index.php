@@ -15,10 +15,14 @@ echo $this->render('../partials/siteHeader');
             <div class="row">
                 <div class="col m12">
                     <div class="panel">                        
-                        <div>
-                            <?= Html::a('Roles', '/role') ?>
-                            <br />
-                            <?= Html::a('Departments', '/department') ?>
+                        <div class="users-managment-links-container">
+                            <h5 class="users-managment-title">Users Managment</h5>
+                            <div class="users-managment-link">
+                                <a href="/role"><i class="material-icons prefix">person_pin_circle</i> Roles</a>
+                            </div>
+                            <div class="users-managment-link">
+                                <a href="/department"><i class="material-icons prefix">account_balance</i> Departments</a>
+                            </div>
                         </div>                        
                     </div>
                 </div>
@@ -26,3 +30,9 @@ echo $this->render('../partials/siteHeader');
         </div>
     </div>
 </div>
+
+
+
+
+<!--Html::a('Roles', '/role')-->
+<!--Html::a('Departments', '/department')-->

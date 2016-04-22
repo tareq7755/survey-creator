@@ -6,9 +6,6 @@ use yii\helpers\Url;
 $this->title                   = 'Surveys';
 $this->params['breadcrumbs'][] = $this->title;
 echo $this->render('../partials/siteHeader');
-//echo '<pre>';
-//print_r($surveys);
-//die('tareq');
 ?>
 
 <div class="main-container">
