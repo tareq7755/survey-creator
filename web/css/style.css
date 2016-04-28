@@ -346,6 +346,86 @@ body {
     width: 25%;
 }
 
+.viewSurvey-wrapper {
+    width: 800px;
+    min-height: 400px;
+    margin: auto;
+    padding-bottom: 50px;
+}
+
+.viewSurvey-wrapper .survey-title-wrapper {
+    text-align: center;
+}
+
+.viewSurvey-wrapper .survey-title-wrapper .survey-title {
+    display: inline-block;
+    margin-top: 40px;
+    margin-bottom: 70px;
+    color: #26a69a;
+    border-bottom: 1px solid #262B33;
+    padding: 0 10px 10px;
+}
+
+.viewSurvey-wrapper .assignee-section, .viewSurvey-wrapper .date-section {
+    display: inline-block;
+    width: 48%;
+}
+
+.viewSurvey-wrapper .date-section {
+    text-align: right;
+}
+
+.viewSurvey-wrapper label {
+    color: #26a69a;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.viewSurvey-wrapper .general-info-wrapper {
+    padding-bottom: 20px;
+    margin-bottom: 70px;
+}
+
+.viewSurvey-wrapper .question-container .question-body-wrapper {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.viewSurvey-wrapper .question-container .question-body-wrapper .option {
+    margin-left: 30px;
+    font-size: 14px;
+    color: #666;
+    font-weight: normal;
+}
+
+.update-questions-wrapper {
+    margin-top: 140px;
+    margin-bottom: 50px;
+}
+
+.update-questions-wrapper .question-body-wrapper {
+    margin-bottom: 70px;
+}
+
+.update-questions-wrapper .question-body-wrapper .material-icons {
+    position: absolute;
+    top: 16px;
+    color: #999;
+}
+
+.update-questions-wrapper .question-body-wrapper .question-body {
+    margin-left: 40px;
+    width: 80%;
+}
+
+.update-questions-wrapper .question-body-wrapper .option {
+    width: 25%;
+    margin-left: 40px;
+}
+
 /********** Users Managment **********/
 
 .users-managment-links-container {

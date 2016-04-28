@@ -43,20 +43,28 @@ use app\models\Question;
             <i class="material-icons prefix">date_range</i>
         </div>
     </div>
+    
 
-    <?php foreach($model->questions as $question): ?>
-        <div class="input-field">
-            <input name="questions[<?= $question->id ?>]" value="<?= $question->body ?>"> 
-        </div>
-        <?php if($question->type == Question::MULTIPLE_CHOICE): ?>
-            <?php foreach($question->options as $option) : ?>
-                <div class="input-field">
-                    <input name="options[<?= $option->id ?>]" value="<?= $option->body ?>">
+    <div class="update-questions-wrapper">
+        <div class="question-container">
+
+            <?php foreach ($model->questions as $question): ?>
+                <div class="question-body-wrapper">
+                    <div class="input-field">
+                        <i class="material-icons">question_answer</i>
+                        <input class="question-body" name="questions[<?= $question->id ?>]" value="<?= $question->body ?>"> 
+                    </div>
+                    <?php if ($question->type == Question::MULTIPLE_CHOICE): ?>
+                        <?php foreach ($question->options as $option) : ?>
+                            <div class="input-field option">
+                                <input name="options[<?= $option->id ?>]" value="<?= $option->body ?>">
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
-        <?php endif; ?>
-    <?php endforeach; ?>
-
+        </div>
+    </div>
 
 
 

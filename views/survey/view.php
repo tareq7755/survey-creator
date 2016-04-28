@@ -7,7 +7,7 @@ use app\models\Question;
 /* @var $this yii\web\View */
 /* @var $model app\models\Surveys */
 
-$this->title                   = $model->title;
+$this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Surveys', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 echo $this->render('../partials/siteHeader');
@@ -20,48 +20,54 @@ echo $this->render('../partials/siteHeader');
             <div class="row">
                 <div class="col m12">
                     <div class="panel">
-                        <div class="created-survey-title-wrapper">
-                            <h4 class="created-survey-title"><?= Html::encode($this->title) ?></h4>
-                        </div>
 
-                        <div class="survey-wrapper">
-                            <h4><?= $model->title; ?></h4>
-                        </div>
+                        <div class="viewSurvey-wrapper">
+                            <div class="survey-title-wrapper">
+                                <h5 class="survey-title"><?= $model->title; ?></h5>
+                            </div>
 
-                        <div>
-                            role: <?= $model->role->name; ?>
-                        </div>
-
-                        <div>
-                            department: <?= $model->department->name; ?>
-                        </div>
-
-                        <div>
-                            published: <?= $model->publish_date; ?>
-                        </div>
-
-                        <div>
-                            end: <?= $model->end_date; ?>
-                        </div>
-
-                        <div class="question-container">
-                            <?php foreach($model->questions as $question): ?>
-                                <div>
-                                    id: <?= $question->id ?>    
-                                </div>
-                                <div>
-                                    body: <?= $question->body ?>    
+                            <div class="general-info-wrapper">
+                                <div class="assignee-section">
+                                    <div class="assignee-section-field">
+                                        <label>role:</label>
+                                        <span><?= $model->role->name; ?>  </span>
+                                    </div>
+                                    <div class="assignee-section-field">
+                                        <label>department:</label>
+                                        <span><?= $model->department->name; ?></span>
+                                    </div>
                                 </div>
 
-                                <?php if($question->type == Question::MULTIPLE_CHOICE): ?>
+                                <div class="date-section">
+                                    <div class="assignee-section-field">
+                                        <label>published:</label>
+                                        <span><?= $model->publish_date; ?></span>
+                                    </div>
+                                    <div class="assignee-section-field">
+                                        <label>end:</label>
+                                        <span><?= $model->end_date; ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="question-container">
+                                <?php foreach ($model->questions as $question): ?>
+                                    <div class="question-body-wrapper">
+                                        <label>*</label>
+                                        <span class="question-body">
+                                            <?= $question->body ?>    
+                                        </span>
+                                    
+                                        <?php if ($question->type == Question::MULTIPLE_CHOICE): ?>
 
-                                    <?php foreach($question->options as $option) : ?>
-                                        <div> Option: <?= $option['body'] ?> </div>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-
-                            <?php endforeach; ?>
-                        </div>                        
+                                            <?php foreach ($question->options as $option) : ?>
+                                                <div class="option"><?= $option['body'] ?> </div>
+                                            <?php endforeach; ?>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>   
+                        </div>
                     </div>
                 </div>
             </div>
