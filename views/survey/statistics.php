@@ -16,12 +16,7 @@ echo $this->render('../partials/siteHeader');
             <div class="row">
                 <div class="col m12">
                     <div class="panel">
-                        <div class="surveys-index">
-                            <?php if(Yii::$app->user->identity->role_id == User::ADMIM): ?>
-                                <p>
-                                    <?= Html::a('Create Survey', ['create'], ['class' => 'btn']) ?>
-                                </p>
-                            <?php endif; ?>
+                        <div class="surveys-index">                            
                             <table class="highlight responsive-table surveys-table">
                                 <thead>
                                     <tr>
@@ -36,15 +31,8 @@ echo $this->render('../partials/siteHeader');
                                         <tr>
                                             <td><?= $survey->id; ?></td>
                                             <td><?= $survey->title; ?></td>
-                                            <td>
-                                                <?php if(Yii::$app->user->identity->role_id == User::ADMIM): ?>
-                                                    <a href="<?= Url::to('/survey/update?id=' . $survey->id) ?>"><i class="material-icons">mode_edit</i></a>                                                
-                                                    <a href="<?= Url::to('/survey/delete?id=' . $survey->id) ?>" data-method="post" data-confirm="Are you sure?"><i class="material-icons">delete</i></a>
-                                                <?php endif; ?>                                                
-                                                <a href="<?= Url::to('/survey/' . $survey->id) ?>"><i class="material-icons">remove_red_eye</i></a>
-                                                <?php if(Yii::$app->user->identity->role_id != User::ADMIM) : ?>    
-                                                    <a href="<?= Url::to('/survey/answer?id=' . $survey->id) ?>"><i class="material-icons">import_contacts</i></a>
-                                                <?php endif; ?>
+                                            <td>                                                
+                                                <a href="<?= Url::to('/survey/statistics?id=' . $survey->id) ?>"><i class="material-icons">insert_chart</i></a>                                                
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

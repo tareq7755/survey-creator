@@ -20,7 +20,7 @@ use app\models\User;
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="<?= Url::to('/survey/statistics') ?>">
                     <i class="material-icons">insert_chart</i>
                     <span>Stats</span>
                 </a>

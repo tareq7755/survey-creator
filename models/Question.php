@@ -98,5 +98,8 @@ class Question extends \yii\db\ActiveRecord
     public function getOptions(){
         return $this->hasMany(QuestionOptions::className(), ['question_id' => 'id']);
     }
-
+    public function getAnswers(){
+        return $this->hasMany(Answer::className(), ['question_id' => 'id']);
+    }
+    
 }

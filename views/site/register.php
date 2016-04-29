@@ -7,6 +7,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
+use app\models\User;
 
 $this->title                   = 'Register';
 $this->params['breadcrumbs'][] = $this->title;
@@ -69,15 +70,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
 
-                    <!--                    <div class="row">
-                                            <div class="col s10 offset-s1">
-                                                <div class="input-field confirm-password-field">
-                                                    <input id="password" type="password" class="validate">
-                                                    <label for="confirm-password">Confirm password</label>
-                                                </div>
-                                            </div>
-                                        </div>-->
-
                     <div class="row">
                         <div class="col s10 offset-s1">
                             <div class="input-field id-field">
@@ -100,7 +92,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="col s10 offset-s1">
                             <div class="role-wrapper">
                                 <div class="role-radio">                                    
-                                    <?= $form->field($model, 'role')->dropDownList(ArrayHelper::map($roleModel->find()->all(), 'id', 'name'))->label(); ?>
+                                    <?= $form->field($model, 'role')->dropDownList(ArrayHelper::map($roleModel->find()->where('id != ' . User::ADMIM)->all(), 'id', 'name'))->label(); ?>
                                 </div>                                
                             </div>
                         </div>

@@ -41,9 +41,9 @@ $(document).ready(function () {
         $('.submit-btn-wrapper').before(essay);
     });
 
-    $(document).on('click', '.questions-form-container .add-option a', function () {
+    $(document).on('click', '.questions-form-container .add-option a', function (e) {
+        e.preventDefault();
         $(this).before(option);
-        return false;
     });
     
     $(document).on('click', '.delete-question', function() {

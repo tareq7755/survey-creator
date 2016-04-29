@@ -28,8 +28,7 @@ echo $this->render('../partials/siteHeader');
                                 'attributes' => [
                                     'id',
                                     'name',
-                                    'created_at',
-                                    'updated_at',
+                                    'created_at',                                    
                                 ],
                             ])
                             ?>

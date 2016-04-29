@@ -59,8 +59,8 @@ class SiteController extends Controller
     }
 
     public function actionIndex()
-    {        
-        $conditions = Yii::$app->user->identity->role_id != User::ADMIM ? ['targeted_role_id' => Yii::$app->user->identity->role_id] : [];
+    {   
+        $conditions = Yii::$app->user->identity->role_id != User::ADMIM ? ['targeted_role_id' => Yii::$app->user->identity->role_id, 'targeted_department_id' =>Yii::$app->user->identity->department_id] : [];
         $surveys    = Survey::find()->where($conditions)->limit(5)->all();        
         return $this->render('index', ['surveys' => $surveys]);
     }

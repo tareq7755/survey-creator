@@ -31,6 +31,7 @@ echo $this->render('../partials/siteHeader');
                         <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
                         <div class="add-questiontype-wrapper">
                             <div class="add-question" id="add-question"><a href="#">Add question</a></div>
+                            <br />
                             <div class="add-essay" id="add-essay"><a href="#">Add essay</a></div>
                         </div>
                         <input type="hidden" value="<?= $surveyId ?>" id="survey-id">

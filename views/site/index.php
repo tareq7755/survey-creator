@@ -1,10 +1,11 @@
 <?php
 /* @var $this yii\web\View */
+
 use app\models\User;
 use yii\helpers\Url;
+
 $this->title = 'My Yii Application';
 echo $this->render('../partials/siteHeader');
-
 ?>
 
 <div class="main-container">
@@ -36,6 +37,9 @@ echo $this->render('../partials/siteHeader');
                                                 <a href="<?= Url::to('/survey/delete?id=' . $survey->id) ?>" data-method="post" data-confirm="Are you sure?"><i class="material-icons">delete</i></a>
                                             <?php endif; ?>
                                             <a href="<?= Url::to('/survey/' . $survey->id) ?>"><i class="material-icons">remove_red_eye</i></a>
+                                            <?php if(Yii::$app->user->identity->role_id != User::ADMIM) : ?>    
+                                                <a href="<?= Url::to('/survey/answer?id=' . $survey->id) ?>"><i class="material-icons">import_contacts</i></a>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

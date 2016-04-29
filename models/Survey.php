@@ -42,10 +42,10 @@ class Survey extends \yii\db\ActiveRecord{
         return [
             'id'                     => 'ID',
             'title'                  => 'Title',
-            'targeted_role_id'       => 'Targeted Role ID',
-            'targeted_department_id' => 'Targeted Department ID',
-            'publish_date'           => 'Publish Date',
-            'end_date'               => 'End Date',
+            'targeted_role_id'       => 'Targeted Role',
+            'targeted_department_id' => 'Targeted Department',
+            'publish_date'           => 'Publish Date | yyyy-mm-dd',
+            'end_date'               => 'End Date | yyyy-mm-dd',
             'created_at'             => 'Created At',
             'updated_at'             => 'Updated At',
         ];
@@ -61,6 +61,35 @@ class Survey extends \yii\db\ActiveRecord{
 
     public function getRole(){
         return $this->hasOne(Role::className(), ['id' => 'targeted_role_id']);
+    }
+    
+    public function getAnswers(){
+        return $this->hasMany(Answer::className(), ['survey_id' => 'id']);
+    }
+    
+    
+    /**
+     * 
+     * @param \app\models\Survey $survey
+     */
+    public static function getStatistics(Survey $survey){
+        $optionsData = [];
+        $data        = [];
+        foreach($survey->questions as $question){
+            if($question->type == Question::MULTIPLE_CHOICE){
+                foreach($question->options as $option){
+                    $optionsData[$question->id][] = ['name' => $option->body, 'y' => Answer::find()->where(['option_id' => $option->id])->count()];
+                }
+                $data [$question->id] = [
+                    'title'  => trim($question->body),
+                    'series' => [
+                        'name' => 'Answers',
+                        'data' => $optionsData[$question->id]
+                    ]
+                ];
+            }
+        }
+        return $data;
     }
 
 }

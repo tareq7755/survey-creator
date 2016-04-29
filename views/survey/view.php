@@ -1,7 +1,4 @@
 <?php
-
-use yii\helpers\Html;
-use yii\widgets\DetailView;
 use app\models\Question;
 
 /* @var $this yii\web\View */
@@ -29,22 +26,22 @@ echo $this->render('../partials/siteHeader');
                             <div class="general-info-wrapper">
                                 <div class="assignee-section">
                                     <div class="assignee-section-field">
-                                        <label>role:</label>
+                                        <label>Role:</label>
                                         <span><?= $model->role->name; ?>  </span>
                                     </div>
                                     <div class="assignee-section-field">
-                                        <label>department:</label>
+                                        <label>Department:</label>
                                         <span><?= $model->department->name; ?></span>
                                     </div>
                                 </div>
 
                                 <div class="date-section">
                                     <div class="assignee-section-field">
-                                        <label>published:</label>
+                                        <label>Publish Date:</label>
                                         <span><?= $model->publish_date; ?></span>
                                     </div>
                                     <div class="assignee-section-field">
-                                        <label>end:</label>
+                                        <label>End Date:</label>
                                         <span><?= $model->end_date; ?></span>
                                     </div>
                                 </div>

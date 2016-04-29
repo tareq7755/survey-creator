@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Question;
+use app\models\User;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Surveys */
@@ -22,7 +23,7 @@ use app\models\Question;
 
     <div class="assignee-section">
         <div class="input-field drop-down input-field-with-icon">
-            <?= $form->field($model, 'targeted_role_id')->dropDownList(ArrayHelper::map($roleModel->find()->all(), 'id', 'name'))->label(); ?>
+            <?= $form->field($model, 'targeted_role_id')->dropDownList(ArrayHelper::map($roleModel->find()->where('id !=' . User::ADMIM)->all(), 'id', 'name'))->label(); ?>
             <i class="material-icons prefix">person_pin_circle</i>
         </div>
 
@@ -34,7 +35,7 @@ use app\models\Question;
 
     <div class="datepicker-container">
         <div class="datepicker-wrapper pub-date input-field-with-icon">
-            <?= $form->field($model, 'publish_date')->textInput() ?>
+            <?= $form->field($model, 'publish_date')->textInput()?>
             <i class="material-icons prefix">date_range</i>
         </div>
 

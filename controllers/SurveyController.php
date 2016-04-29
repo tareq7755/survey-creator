@@ -12,6 +12,7 @@ use app\models\Role;
 use app\models\Question;
 use app\models\QuestionOptions;
 use app\models\User;
+use app\models\Answer;
 
 /**
  * SurveyController implements the CRUD actions for Survey model.
@@ -36,7 +37,7 @@ class SurveyController extends Controller
      */
     public function actionIndex()
     {   
-        $conditions = Yii::$app->user->identity->role_id != User::ADMIM ? ['targeted_role_id' => Yii::$app->user->identity->role_id] : [];
+        $conditions = Yii::$app->user->identity->role_id != User::ADMIM ? ['targeted_role_id' => Yii::$app->user->identity->role_id, 'targeted_department_id' =>Yii::$app->user->identity->department_id] : [];
         $surveys    = Survey::find()->where($conditions)->all();
         return $this->render('index', [
                     'surveys' => $surveys,
@@ -81,19 +82,24 @@ class SurveyController extends Controller
      * @return mixed
      */
     public function actionUpdate($id){
-        $model = $this->findModel($id);           
+        $model = $this->findModel($id);
         if($model->load(Yii::$app->request->post()) && $model->save()){
-            $questions = Yii::$app->request->post()['questions'];
-            $options   = Yii::$app->request->post()['options'];            
-            foreach($questions as $questionId => $questionBody){
-                $question       = Question::findOne($questionId);
-                $question->body = $questionBody;
-                $question->save(false);
+            $questions = isset(Yii::$app->request->post()['questions']) ? Yii::$app->request->post()['questions'] : [];
+            $options   = isset(Yii::$app->request->post()['options']) ? Yii::$app->request->post()['options'] : [];
+
+            if(!empty($questions)){
+                foreach($questions as $questionId => $questionBody){
+                    $question       = Question::findOne($questionId);
+                    $question->body = $questionBody;
+                    $question->save(false);
+                }
             }
-            foreach($options as $optionId => $optionBody){
-                $option       = QuestionOptions::findOne($optionId);
-                $option->body = $optionBody;
-                $option->save(false);
+            if(!empty($options)){
+                foreach($options as $optionId => $optionBody){
+                    $option       = QuestionOptions::findOne($optionId);
+                    $option->body = $optionBody;
+                    $option->save(false);
+                }
             }
             return $this->redirect(['view', 'id' => $model->id]);
         }else{
@@ -116,6 +122,43 @@ class SurveyController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+    
+    /**
+     * 
+     * @param int $id
+     * @return render answers form or submit the answers
+     */
+    public function actionAnswer($id){
+        if(Yii::$app->request->post()){
+            $answerModel = new Answer();
+            $essays      = isset(Yii::$app->request->post()[Question::ESSAY]) ? Yii::$app->request->post()[Question::ESSAY] : [];
+            $multiples   = isset(Yii::$app->request->post()[Question::MULTIPLE_CHOICE]) ? Yii::$app->request->post()[Question::MULTIPLE_CHOICE] : [];
+            $answerModel->saveSurveyAnswers($essays, $multiples, $id);
+            return $this->redirect('/');
+        }else{
+            return $this->render('answer', [
+                        'model' => $this->findModel($id),
+            ]);
+        }
+    }
+    
+    /**
+     * Lists all Survey models.
+     * @return mixed
+     */
+    public function actionStatistics(){
+        if($id = Yii::$app->request->get('id')){                        
+            $survey      = $this->findModel($id);
+            $statistics  = Survey::getStatistics($survey);            
+            return $this->render('survey-statistics', ['survey' => $survey, 'statistics' => $statistics]);
+        }else{
+            $conditions = Yii::$app->user->identity->role_id != User::ADMIM ? ['targeted_role_id' => Yii::$app->user->identity->role_id, 'targeted_department_id' =>Yii::$app->user->identity->department_id] : [];
+            $surveys    = Survey::find()->where($conditions)->all();
+            return $this->render('statistics', [
+                        'surveys' => $surveys,
+            ]);
+        }
     }
 
     /**

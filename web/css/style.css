@@ -408,7 +408,7 @@ body {
 
 .viewSurvey-wrapper .question-container .question-body-wrapper {
     margin-bottom: 10px;
-    border-bottom: 1px solid #ccc;
+    /*border-bottom: 1px solid #ccc;*/
     padding-bottom: 10px;
     font-size: 16px;
     font-weight: bold;
@@ -447,6 +447,7 @@ body {
 }
 
 .add-questiontype-wrapper .add-question, .add-questiontype-wrapper .add-essay {
+    display: inline-block;
     margin-left: 5px;
     margin-bottom: 5px;
     padding-left: 10px;

@@ -32,7 +32,7 @@ class RoleController extends Controller
      */
     public function actionIndex()
     {
-        $roles = Role::find()->all();        
+        $roles = Role::find()->where('id != 0')->all();        
         return $this->render('index', [
             'roles' => $roles,
         ]);
