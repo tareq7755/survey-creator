@@ -27,9 +27,9 @@ $(document).ready(function () {
 
     /////////////////////////////////////////////////////////////////////////
 
-    var question = "<div class='questions-form-container multiple-choice-question'><div class='input-field question-wrapper'><textarea form='questions-form' name = 'question-body' id='textarea1' class='materialize-textarea'></textarea><label for='textarea1' class='questionNum'></label></div><div class='input-field option-wrapper'><input type='text' class='validate' name='question-option'><label class='optionNum'></label></div><div class='input-field option-wrapper'><input type='text' class='validate'><label class='optionNum'></label></div><div class='add-option'><a href='#'>Add option</a></div></div>";
+    var question = "<div class='questions-form-container multiple-choice-question'><div class='input-field question-wrapper'><textarea form='questions-form' name = 'question-body' id='textarea1' class='materialize-textarea'></textarea><label for='textarea1' class='questionNum'></label></div><div class='input-field option-wrapper'><input type='text' class='validate' name='question-option'><label class='optionNum'></label></div><div class='input-field option-wrapper'><input type='text' class='validate'><label class='optionNum'></label></div><div class='add-option'><a href='#'>Add option</a></div><a href='#' class='delete-question'>delete question</a></div>";
 
-    var essay = "<div class='questions-form-container essay-question'><div class='input-field question-wrapper'><textarea id='textarea1' class='materialize-textarea'></textarea><label for='textarea1' class='questionNum'></label></div></div>";
+    var essay = "<div class='questions-form-container essay-question'><div class='input-field question-wrapper'><textarea id='textarea1' class='materialize-textarea'></textarea><label for='textarea1' class='questionNum'></label></div><a href='#' class='delete-question'>delete question</a></div>";
 
     var option = "<div class='input-field option-wrapper'><input type='text' class='validate'><label class='optionNum'></label></div>";
 
@@ -44,6 +44,10 @@ $(document).ready(function () {
     $(document).on('click', '.questions-form-container .add-option a', function () {
         $(this).before(option);
         return false;
+    });
+    
+    $(document).on('click', '.delete-question', function() {
+       $(this).closest('.questions-form-container').remove();
     });
 
 

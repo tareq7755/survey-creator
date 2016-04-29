@@ -72,6 +72,7 @@ body {
 
 .submit-btn-wrapper {
     padding-top: 24px;
+    margin-right: 10px;
 }
 
 /********** Main Page **********/
@@ -340,10 +341,29 @@ body {
     width: 1000px;
     margin: auto;
     padding-bottom: 50px;
+    position: relative;
 }
 
 .questions-form-container .option-wrapper {
     width: 25%;
+}
+
+.questions-form-container .add-option a {
+    color: #26a69a;
+}
+
+.multiple-choice-question .delete-question {
+    position: absolute;
+    right: 0;
+    bottom: 50px;
+    color: #26a69a;
+}
+
+.essay-question .delete-question {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    color: #26a69a;
 }
 
 .viewSurvey-wrapper {
@@ -424,6 +444,25 @@ body {
 .update-questions-wrapper .question-body-wrapper .option {
     width: 25%;
     margin-left: 40px;
+}
+
+.add-questiontype-wrapper .add-question, .add-questiontype-wrapper .add-essay {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    border-left: 1px solid #26a69a;
+}
+
+.add-questiontype-wrapper .add-question a, .add-questiontype-wrapper .add-essay a {
+    color: #26a69a;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+}
+
+.add-questiontype-wrapper .add-question a:hover, .add-questiontype-wrapper .add-essay a:hover {
+    color: #262B33;
+    padding-left: 20px;
 }
 
 /********** Users Managment **********/
