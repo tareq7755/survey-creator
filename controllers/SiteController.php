@@ -13,6 +13,7 @@ use app\models\Department;
 use app\models\Role;
 use app\models\Survey;
 use app\models\User;
+use app\models\Answer;
 
 class SiteController extends Controller
 {
@@ -60,8 +61,15 @@ class SiteController extends Controller
 
     public function actionIndex()
     {   
-        $conditions = Yii::$app->user->identity->role_id != User::ADMIM ? ['targeted_role_id' => Yii::$app->user->identity->role_id, 'targeted_department_id' =>Yii::$app->user->identity->department_id] : [];
-        $surveys    = Survey::find()->where($conditions)->limit(5)->all();        
+        $conditions      = Yii::$app->user->identity->role_id != User::ADMIM ? ['targeted_role_id' => Yii::$app->user->identity->role_id, 'targeted_department_id' => Yii::$app->user->identity->department_id] : [];
+        $surveys         = Survey::find()->where($conditions)->limit(5)->all();
+        $answeredSurveys = Answer::find()->asArray()->select(['survey_id'])->where(['user_id' => Yii::$app->user->identity->id])->distinct()->all();
+        $answeredSurveys = array_column($answeredSurveys, 'survey_id');
+        foreach($surveys as $key => $survey){
+            if(in_array($survey->id, $answeredSurveys)){
+                unset($surveys[$key]);
+            }
+        }
         return $this->render('index', ['surveys' => $surveys]);
     }
 

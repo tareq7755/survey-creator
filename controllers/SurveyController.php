@@ -36,9 +36,16 @@ class SurveyController extends Controller
      * @return mixed
      */
     public function actionIndex()
-    {   
+    {           
         $conditions = Yii::$app->user->identity->role_id != User::ADMIM ? ['targeted_role_id' => Yii::$app->user->identity->role_id, 'targeted_department_id' =>Yii::$app->user->identity->department_id] : [];
-        $surveys    = Survey::find()->where($conditions)->all();
+        $surveys    = Survey::find()->where($conditions)->all();        
+        $answeredSurveys = Answer::find()->asArray()->select(['survey_id'])->where(['user_id'=>Yii::$app->user->identity->id])->distinct()->all();
+        $answeredSurveys = array_column($answeredSurveys, 'survey_id');
+        foreach($surveys as $key => $survey){
+            if(in_array($survey->id, $answeredSurveys)){
+                unset($surveys[$key]);
+            }
+        }        
         return $this->render('index', [
                     'surveys' => $surveys,
         ]);
