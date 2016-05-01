@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="container">
       <div class="row">
-        <div class="col l4 offset-l4 m8 offset-m2 s10 offset-s1">
+        <div class="login-form-container">
 
           <div class="login-form card hoverable">
 
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
               <div class="row">
                 <div class="col s10 offset-s1">       
-                    <div class="input-field email-field input-field-with-icon">
+                    <div class="input-field login-field input-field-with-icon">
                         <?= $form->field($model, 'email') ?>
                         <i class="material-icons prefix">email</i>   
                     </div>
@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
               <div class="row">
                 <div class="col s10 offset-s1">
-                    <div class="input-field email-field input-field-with-icon">
+                    <div class="input-field login-field input-field-with-icon">
                         <?= $form->field($model, 'password')->passwordInput() ?>
                         <i class="material-icons prefix">vpn_key</i>
                     </div>

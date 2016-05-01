@@ -1,17 +1,31 @@
+@media ( max-width: 768px ) {
+
+    .register-form-container {
+        width: 80%;
+    }
+    
+}
+
+
+
 @media ( max-width: 600px ) {
 
-	.submit-btn-wrapper {
-		text-align: center;
-	}
+    .login-form-container {
+        width: 80%;
+    }
 
-	.login-btn, .submit-btn {
-		float: none;
-		width: 100%;
-	}
+    .submit-btn-wrapper {
+        text-align: center;
+    }
 
-	.form-forgot-wrapper {
-		text-align: center;
-		margin-bottom: 25px;
-	}
+    .login-btn, .submit-btn {
+        float: none;
+        width: 100%;
+    }
+
+    .form-forgot-wrapper {
+        text-align: center;
+        margin-bottom: 25px;
+    }
 
 }

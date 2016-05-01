@@ -1,6 +1,7 @@
 <?php
 $this->title = 'Surveys statistics';
 echo $this->render('../partials/siteHeader');
+
 use app\models\Question;
 ?>
 
@@ -11,8 +12,8 @@ use app\models\Question;
         <div class="page-dashboard">
             <div class="row">
                 <div class="col m12">
-                    <div class="panel">   
-                        <div class="statistics-container">
+                    <div class="statistics-container">
+                        <div class="panel"> 
                             <div class="viewSurvey-wrapper">
                                 <div class="survey-title-wrapper">
                                     <h5 class="survey-title"><?= $survey->title; ?></h5>
@@ -42,24 +43,29 @@ use app\models\Question;
                                     </div>
                                 </div>
                             </div>
-                            <?php foreach($survey->questions as $question): ?>  
-                                <div class="survey-question-wrapper">                                                                      
-                                    <?php if($question->type == Question::MULTIPLE_CHOICE): ?>
+                        </div>
+                        <?php foreach ($survey->questions as $question): ?>  
+                            <div class="survey-question-wrapper">                                                                      
+                                <?php if ($question->type == Question::MULTIPLE_CHOICE): ?>
+                                    <div class="panel">   
                                         <div class="question-chart" data-stats="<?= htmlspecialchars(json_encode($statistics[$question->id]), ENT_QUOTES, 'UTF-8'); ?>"></div>
-                                    <?php else: ?>
-                                        <div class="question-title">
-                                            <h3><?= $question->body ?></h3>
-                                            <?php if(!empty($question->answers)): ?>
-                                                <?php foreach($question->answers as $answer): ?>
-                                                    <div><?= $answer->body ?></div>
+                                    </div>
+                                <?php else: ?>
+                                    <div class="panel">
+                                        <div class="essay-answer-wrapper">
+                                            <div class="question-title">
+                                                <h5><?= $question->body ?></h5>
+                                            </div>  
+                                            <?php if (!empty($question->answers)): ?>
+                                                <?php foreach ($question->answers as $answer): ?>
+                                                    <div class="essay-answer-body"><?= $answer->body ?></div>
                                                 <?php endforeach; ?>
                                             <?php endif; ?>
-                                        </div>  
-                                    <?php endif; ?>
-
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>

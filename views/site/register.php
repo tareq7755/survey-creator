@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="container">
         <div class="row">
-            <div class="col l6 offset-l3 m8 offset-m2 s10 offset-s1">
+            <div class="register-form-container">
 
                 <div class="register-form card hoverable">
 
