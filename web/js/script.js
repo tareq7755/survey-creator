@@ -31,7 +31,7 @@ $(document).ready(function () {
 
     var essay = "<div class='questions-form-container essay-question'><div class='input-field question-wrapper'><textarea id='textarea1' class='materialize-textarea'></textarea><label for='textarea1' class='questionNum'></label></div><a href='#' class='delete-question'>delete question</a></div>";
 
-    var option = "<div class='input-field option-wrapper'><input type='text' class='validate'><label class='optionNum'></label></div>";
+    var option = "<div class='input-field option-wrapper'><input type='text' class='validate'><label class='optionNum'></label><a href='#' class='remove-option-wrapper'><i class='material-icons remove-option'>&#xE15D;</i></a></div>";
 
     $(document).on('click', '#add-question', function () {
         $('.submit-btn-wrapper').before(question);
@@ -44,6 +44,11 @@ $(document).ready(function () {
     $(document).on('click', '.questions-form-container .add-option a', function (e) {
         e.preventDefault();
         $(this).before(option);
+    });
+    
+    $(document).on('click', '.multiple-choice-question .remove-option-wrapper', function(e) {
+        e.preventDefault();
+        $(this).closest('.option-wrapper').remove();
     });
     
     $(document).on('click', '.delete-question', function() {

@@ -22,7 +22,6 @@ echo $this->render('../partials/siteHeader');
                     <div class="panel">
                         <div class="department-view">
 
-                            <h1><?= Html::encode($this->title) ?></h1>
                             <?=
                             DetailView::widget([
                                 'model' => $model,

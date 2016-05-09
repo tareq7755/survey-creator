@@ -34,7 +34,7 @@ use app\models\User;
                 </li>
             <?php endif; ?>
             <li class="side-logout">
-                <a href="#">
+                <a href="/site/logout">
                     <i class="material-icons">power_settings_new</i>
                     <span>Logout</span>
                 </a>

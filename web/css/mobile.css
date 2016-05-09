@@ -1,14 +1,93 @@
+@media ( max-width: 1200px ) {
+    .survey-question-wrapper .essay-answer-wrapper {
+        width: 800px;
+    }
+}
+
+@media ( max-width: 996px ) {
+
+    .content-container .createSurvey-wrapper {
+        width: 600px;
+    }
+
+    .viewSurvey-wrapper {
+        width: 600px;
+    }
+
+    .questions-form-container {
+        width: 600px;
+    }
+
+    .content-container .createRole-wrapper, .content-container .createDepartment-wrapper {
+        width: 600px;
+    }
+
+    .survey-question-wrapper .essay-answer-wrapper {
+        width: 600px;
+    }
+
+}
+
 @media ( max-width: 768px ) {
 
     .register-form-container {
         width: 80%;
     }
-    
+
+    .content-container .createSurvey-wrapper {
+        width: 90%;
+    }
+
+    .viewSurvey-wrapper {
+        width: 90%;
+    }
+
+    .questions-form-container {
+        width: 90%;
+    }
+
+    .content-container .createRole-wrapper, .content-container .createDepartment-wrapper {
+        width: 90%;
+    }
+
+    .survey-question-wrapper .essay-answer-wrapper {
+        width: 90%;
+    }
+
+    .content-container .createSurvey-wrapper .drop-down {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .content-container .createSurvey-wrapper .datepicker-wrapper {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .viewSurvey-wrapper .assignee-section, .viewSurvey-wrapper .date-section {
+        display: block;
+        width: 100%;
+    }
+
+    .viewSurvey-wrapper .date-section {
+        text-align: left;
+    }
+
 }
 
 
 
 @media ( max-width: 600px ) {
+    
+    .top-header .logo {
+        width: 160px;
+    }
+    
+    .top-header .top-nav {
+        padding: 0 0 0 160px;
+    }
 
     .login-form-container {
         width: 80%;
@@ -26,6 +105,30 @@
     .form-forgot-wrapper {
         text-align: center;
         margin-bottom: 25px;
+    }
+
+    .questions-form-container .option-wrapper {
+        width: 40%;
+    }
+
+    .add-questiontype-wrapper .add-question {
+        margin-top: 20px;
+    }
+
+    .row .col {
+        float: none;
+    }
+    
+    .nav-container.hover-menu {
+        width: 55px;
+    }
+    
+    .content-container.hover-menu {
+        margin-left: 55px;
+    }
+    
+    .nav-container.hover-menu .nav-main a i {
+        font-size: 22px;
     }
 
 }
